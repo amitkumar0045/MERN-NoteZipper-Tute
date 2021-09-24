@@ -8,6 +8,7 @@ import {
     NavDropdown,
     Button,
 } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
@@ -15,7 +16,10 @@ const Header = () => {
 
             <Navbar bg="primary" expand="lg" variant="dark">
                 <Container>
-                    <Navbar.Brand href="#">Note Zipper</Navbar.Brand>
+                    {/* <Navbar.Brand href="#">Note Zipper</Navbar.Brand> */}
+                    <Navbar.Brand>
+                        <Link to='/'>  Note Zipper </Link>
+                    </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className='m-auto'>
@@ -36,7 +40,9 @@ const Header = () => {
                         // style={{ maxHeight: '100px' }}
                         // navbarScroll
                         >
-                            <Nav.Link href="#home">My Notes</Nav.Link>
+                            <Nav.Link href="/mynotes">
+                                <Link to="/mynotes"> My Notes </Link>
+                            </Nav.Link>
                             <NavDropdown title="AAraya" id="basic-navbar-dropdown">
                                 <NavDropdown.Item href="#action3">My Profile</NavDropdown.Item>
                                 <NavDropdown.Divider />
