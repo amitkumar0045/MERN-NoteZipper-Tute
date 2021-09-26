@@ -9,8 +9,7 @@ const app = express();
 dotenv.config();
 connectDB();
 app.use(express.json())
-// app.use(notFound);
-// app.use(errorHandler);
+
 
 //\\----
 // app.get("/", (req, res) => {
@@ -28,7 +27,8 @@ app.use(express.json())
 //\\----
 
 app.use('/api/users', userRoutes)
-
+app.use(notFound);
+app.use(errorHandler);
 const PORT = process.env.PORT || 5000;
 
 app.listen(
