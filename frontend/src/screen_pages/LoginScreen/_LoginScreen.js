@@ -1,34 +1,49 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import MainScreen from '../../components/MainScreen'
-// import axios from 'axios'
+import axios from 'axios'
 import Loading from '../../components/Loading'
 import ErrorMessage from '../../components/ErrorMessage'
-import { useDispatch, useSelector } from 'react-redux'
-import { login } from '../../redux-actions/userActions'
 
-const LoginScreen = ({ history }) => {
+
+const LoginScreen = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [error, setError] = useState(false)
+    const [loading, setLoading] = useState(false)
 
-    const dispatch = useDispatch();
-
-    const userLogin = useSelector((state) => state.userLogin);
-    const { error, userInfo, loading } = userLogin;
-
-    useEffect(() => {
-        if (userInfo) {
-            history.push('/mynotes');
-        }
-    }, [history, userInfo]);
-
+    //__\\
     const submitHandler = async (e) => {
-        e.preventDefault();
+        // const submitHandler = (e) => {
+        e.preventDefault()
+        // console.log(email, password);
 
-        dispatch(login(email, password))
+        //=>moved to  userAction.js >>>>>
+        //     try {
+        //         const config = {
+        //             headers: {
+        //                 "Content-type": "application/json"
+        //             }
+        //         }
+
+        //         setLoading(true)
+
+        //         const { data } = await axios.post('/api/users/login', {
+        //             email,
+        //             password
+        //         },
+        //             config
+        //         );
+        //         console.log(data)
+        //         localStorage.setItem('userInfo', JSON.stringify(data));
+        //         setLoading(false)
+        //     } catch (error) {
+        //         setError(error.response.data.message);
+        //         setLoading(false);
+        //     }
     };
-
+    //--\\
 
     return (
         <MainScreen title="LOGIN">
