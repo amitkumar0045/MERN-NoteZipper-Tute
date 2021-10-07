@@ -1,9 +1,9 @@
 //1.// this is our entry point as we defined during ""npm init""
 
-//2.// required is used to bring the packages
+//2.// required is used to bring the packages justLike ">> import {something} from 'pathhh' <<"  
 const express = require('express')
 const notes = require('./data/notes') //dummy  data
-const dotenv = require("dotenv")//contains secrt info like api-keys
+const dotenv = require("dotenv")//contains secret info like api-keys
 
 //3.// creating an object of imported package//
 const app = express();
@@ -31,7 +31,7 @@ app.get('/api/notes/:id', (req, res) => {
 //** **//
 
 //4.// creating a web server
-//_DEFAULT_ app.listen(5000, console.log("Server started on PORT 5000"))  //
+//_DEFAULT_>><< app.listen(5000, console.log("Server started on PORT 5000"))  //
 const PORT = process.env.PORT || 5000;
 
 app.listen(

@@ -1,7 +1,7 @@
 // Model defines what type of data is user is going to have ...
 
 const mongoose = require('mongoose'); // to create our "userMOdel"
-const bcrypt = require('bcryptjs'); //
+const bcrypt = require('bcryptjs'); // to incrypt our --data
 
 const userSchema = mongoose.Schema(
     {
@@ -18,16 +18,15 @@ const userSchema = mongoose.Schema(
             type: String,
             required: true,
         },
-        isAdmin: {
-            //just in case if we need
-            type: Boolean,
-            required: true,
-            default: true,
-        },
         pic: {
             type: String,
             required: true,
             default: 'https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg'
+        },
+        isAdmin: { //just in case if we need
+            type: Boolean,
+            required: true,
+            default: true,
         },
     },
     {
@@ -48,7 +47,6 @@ userSchema.pre('save', async function (next) {
 userSchema.methods.matchPassword = async function (enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password);
 }
-
 
 const User = mongoose.model('User', userSchema);
 

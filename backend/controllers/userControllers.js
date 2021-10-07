@@ -1,8 +1,8 @@
-const asyncHandler = require('express-async-handler')
+const asyncHandler = require('express-async-handler');
 const User = require('../models/userModel');
 const generateToken = require('../utils/generateToken');
 
-
+//----><---- register new USER
 const registerUser = asyncHandler(async (req, res) => {
     // const registerUser = async (req, res) => {  // >> without asyncHandler
 
@@ -25,18 +25,17 @@ const registerUser = asyncHandler(async (req, res) => {
     if (user) {
         res.status(201).json({
             _id: user._id,
+            pic: user.pic,
             name: user.name,
             email: user.email,
             isAdmin: user.isAdmin,
-            pic: user.pic,
-            // password: user.password,
             token: generateToken(user._id) //jwt token
+            // password: user.password,
         });
     } else {
         res.status(400)
         throw new Error('!Error Occured ! User not Found !')
     }
-
     // res.json({
     //     name,
     //     email,
@@ -44,7 +43,7 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 
-//>>--auth --authUser
+//----><---- authorizing-User
 const authUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
 

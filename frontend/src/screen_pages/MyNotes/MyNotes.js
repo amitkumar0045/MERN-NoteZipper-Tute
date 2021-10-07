@@ -32,8 +32,6 @@ const MyNotes = () => {
     }, [])
 
 
-
-
     return (
         <MainScreen title="Welcome to NoteZipper Amit....">
             <Link to='/createnote'>

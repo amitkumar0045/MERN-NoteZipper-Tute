@@ -74,7 +74,6 @@ const LoginScreen = () => {
                         Submit
                     </Button>
 
-
                 </Form>
                 {/* <span>New Customer ? Register Here</span> */}
                 <Row className="py-3">
