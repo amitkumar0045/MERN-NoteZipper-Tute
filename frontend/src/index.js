@@ -5,10 +5,14 @@ import './bootstrap.min.css';  //\\ using bootwatch themes >> https://bootswatch
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { Provider } from 'react-redux';
+import store from './store';
+// >>npm i redux-devtools-extension <for our application>
+
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 

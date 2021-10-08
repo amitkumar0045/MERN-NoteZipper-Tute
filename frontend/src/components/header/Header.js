@@ -9,9 +9,25 @@ import {
     Button,
 } from "react-bootstrap";
 import { Link, useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux'
+import { logout } from '../../redux-actions/userActions';
+
+
 
 const Header = () => {
     const history = useHistory();
+
+    const dispatch = useDispatch();
+
+    const userLogin = useSelector(state => state.userLogin)
+    const { userInfo } = userLogin
+
+    const logoutHandler = () => {
+        dispatch(logout());
+        history.push("/");
+    };
+
+
     return (
         <div>
 
@@ -47,10 +63,16 @@ const Header = () => {
                             <NavDropdown title="AAraya" id="basic-navbar-dropdown">
                                 <NavDropdown.Item href="#action3">My Profile</NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item onClick={() => {
-                                    localStorage.removeItem("userInfo");
-                                    history.push("/")
-                                }} >Logout</NavDropdown.Item>
+                                <NavDropdown.Item
+                                    onClick={logoutHandler}
+                                // onClick={() => {
+                                //     localStorage.removeItem("userInfo");
+                                //     history.push("/")
+                                // }}
+
+                                >
+                                    Logout
+                                </NavDropdown.Item>
 
                             </NavDropdown>
                             {/* <Nav.Link href="#" disabled>
